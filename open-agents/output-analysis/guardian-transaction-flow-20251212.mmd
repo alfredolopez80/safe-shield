@@ -1,0 +1,69 @@
+```mermaid
+sequenceDiagram
+    participant User as Treasury Team
+    participant UI as Safe Interface
+    participant Safe as Safe Smart Account
+    participant Guard as Transaction Guard
+    participant Guardian as Hypernative Guardian
+    participant Sim as Transaction Simulator
+    participant AI as AI Detection Engine
+    participant Policy as Policy Engine
+    participant Chain as Blockchain
+
+    User->>UI: Initiate Transaction<br/>(to, value, data)
+    UI->>Safe: Create Transaction
+    Safe->>Guard: checkTransaction()<br/>Pre-execution Hook
+
+    activate Guard
+    Guard->>Guardian: Analyze Transaction
+
+    activate Guardian
+    Guardian->>Sim: Simulate Execution
+    activate Sim
+    Sim->>Chain: Fork Chain State
+    Chain-->>Sim: Current State
+    Sim->>Sim: Execute Transaction<br/>in Sandbox
+    Sim-->>Guardian: Simulation Results<br/>(state changes, events, gas)
+    deactivate Sim
+
+    Guardian->>AI: Detect Threats
+    activate AI
+    AI->>AI: Pattern Matching<br/>300+ Risk Types
+    AI->>AI: ML Model Analysis
+    AI->>AI: Cross-chain Correlation
+    AI-->>Guardian: Risk Assessment<br/>(score, categories, severity)
+    deactivate AI
+
+    Guardian->>Policy: Apply Policies
+    activate Policy
+    Policy->>Policy: Check Whitelists
+    Policy->>Policy: Validate Limits
+    Policy->>Policy: Screen Addresses
+    Policy->>Policy: Evaluate Thresholds
+    Policy-->>Guardian: Policy Verdict<br/>(approve/flag/deny)
+    deactivate Policy
+
+    Guardian-->>Guard: Final Assessment<br/>(verdict + explanation)
+    deactivate Guardian
+
+    Guard-->>Safe: Return Verdict
+    deactivate Guard
+
+    Safe->>UI: Display Results
+    UI-->>User: Show Risk Assessment<br/>+ Plain Language Explanation
+
+    alt Transaction Approved
+        User->>UI: Approve & Sign
+        UI->>Safe: Submit Signatures
+        Safe->>Chain: Execute Transaction
+        Chain-->>Safe: Transaction Receipt
+        Safe->>Guard: checkAfterExecution()<br/>Post-execution Hook
+        Guard->>Guardian: Verify Execution
+        Guardian-->>Guard: Confirmation
+    else Transaction Flagged
+        User->>User: Review Risks
+        User->>UI: Manual Approval Decision
+    else Transaction Denied
+        UI-->>User: Transaction Blocked<br/>Policy Violation
+    end
+```

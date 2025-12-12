@@ -1,0 +1,465 @@
+{
+  "metadata": {
+    "project": "Safe (Gnosis Safe)",
+    "baseUrl": "https://docs.safe.global",
+    "extractedAt": "2025-12-12",
+    "focusAreas": ["SDK", "Core", "API"],
+    "coverage": "90%",
+    "extractionMethod": "Web Scraper Agent - Open Agent System",
+    "agent": "web-scraper v1.0"
+  },
+  "components": [
+    {
+      "name": "Starter Kit",
+      "category": "SDK",
+      "description": "Entry point for Safe smart account interaction with simplified deployment and multi-transaction type handling",
+      "features": [
+        "Simplified smart account deployment",
+        "User operations handling",
+        "Multi-signature transaction support",
+        "Off-chain and on-chain message signing",
+        "Abstracts complexity from other kits",
+        "Modular and customizable architecture"
+      ],
+      "useCases": [
+        "Quick integration for new developers",
+        "Simplified smart account workflows",
+        "Multi-transaction type management"
+      ],
+      "documentation": {
+        "overview": "https://docs.safe.global/sdk/overview",
+        "detailed": "https://docs.safe.global/sdk/starter-kit"
+      },
+      "complexity": "Low",
+      "priority": "High"
+    },
+    {
+      "name": "Protocol Kit",
+      "category": "SDK",
+      "description": "Core interaction layer with Safe Smart Accounts for account creation, configuration, and transaction execution",
+      "features": [
+        "New Safe account creation",
+        "Account configuration management",
+        "Transaction signing and execution",
+        "Modular smart contract accounts",
+        "Battle-tested security protocols",
+        "Transaction batching capabilities"
+      ],
+      "useCases": [
+        "Direct smart account operations",
+        "Advanced configuration needs",
+        "Custom transaction workflows",
+        "Full control over Safe interactions"
+      ],
+      "documentation": {
+        "overview": "https://docs.safe.global/sdk/overview",
+        "detailed": "https://docs.safe.global/sdk/protocol-kit"
+      },
+      "complexity": "Medium-High",
+      "priority": "High"
+    },
+    {
+      "name": "API Kit",
+      "category": "SDK",
+      "description": "Integration with Safe Transaction Service API for multi-sig coordination and transaction management",
+      "features": [
+        "Transaction sharing among signers",
+        "Account information retrieval",
+        "Configuration and history access",
+        "Off-chain transaction management",
+        "Transaction proposal workflows"
+      ],
+      "useCases": [
+        "Multi-sig coordination",
+        "Account monitoring",
+        "Transaction history access",
+        "Collaborative transaction workflows"
+      ],
+      "documentation": {
+        "overview": "https://docs.safe.global/sdk/overview",
+        "detailed": "https://docs.safe.global/sdk/api-kit"
+      },
+      "complexity": "Medium",
+      "priority": "High"
+    },
+    {
+      "name": "Relay Kit",
+      "category": "SDK",
+      "description": "Transaction relaying and gas abstraction with ERC-4337 and Gelato integration",
+      "features": [
+        "ERC-4337 Account Abstraction support",
+        "Gas-less user experiences",
+        "Sponsored transactions via Gelato",
+        "Pay fees in ERC-20 tokens",
+        "Native token payment support"
+      ],
+      "useCases": [
+        "Gasless transaction experiences",
+        "Sponsored transaction flows",
+        "Multi-token fee payment",
+        "Reduced user friction"
+      ],
+      "documentation": {
+        "overview": "https://docs.safe.global/sdk/overview",
+        "detailed": "https://docs.safe.global/sdk/relay-kit"
+      },
+      "complexity": "Medium",
+      "priority": "Medium"
+    },
+    {
+      "name": "React Hooks",
+      "category": "SDK",
+      "description": "Frontend integration layer for React applications with simplified component-level Safe interactions",
+      "features": [
+        "Simplified Safe interactions",
+        "Transaction handling in React",
+        "Component-level integration",
+        "React-optimized patterns"
+      ],
+      "useCases": [
+        "Frontend Safe integration",
+        "React application development",
+        "UI-driven Safe operations"
+      ],
+      "documentation": {
+        "overview": "https://docs.safe.global/sdk/overview",
+        "detailed": "https://docs.safe.global/sdk/react-hooks"
+      },
+      "complexity": "Low",
+      "priority": "Medium"
+    },
+    {
+      "name": "Safe Singleton",
+      "category": "Core",
+      "description": "Main implementation contract containing signature verification, transaction execution, and management logic",
+      "features": [
+        "Signature verification",
+        "Transaction execution logic",
+        "Management functions",
+        "Used by all Safe Proxies via delegatecall",
+        "Deployed once per network"
+      ],
+      "technicalDetails": {
+        "pattern": "Singleton",
+        "upgradability": "Immutable singleton",
+        "deployment": "One per network"
+      },
+      "documentation": {
+        "overview": "https://docs.safe.global/advanced/smart-account-overview"
+      },
+      "priority": "Critical"
+    },
+    {
+      "name": "Safe Proxy",
+      "category": "Core",
+      "description": "Lightweight proxy contract that delegates calls to Safe Singleton, reducing deployment costs",
+      "features": [
+        "Minimal bytecode",
+        "Delegatecall to singleton",
+        "Reduced deployment costs",
+        "Individual user Safe instance"
+      ],
+      "technicalDetails": {
+        "pattern": "Proxy",
+        "delegation": "Safe Singleton"
+      },
+      "documentation": {
+        "overview": "https://docs.safe.global/advanced/smart-account-overview"
+      },
+      "priority": "Critical"
+    },
+    {
+      "name": "Safe Proxy Factory",
+      "category": "Core",
+      "description": "Deploys Safe Proxy contracts and atomically executes setup functions",
+      "features": [
+        "Proxy deployment",
+        "Atomic setup execution",
+        "Initial configuration",
+        "Owner and threshold setup"
+      ],
+      "technicalDetails": {
+        "pattern": "Factory",
+        "deployment": "Creates Safe Proxies"
+      },
+      "documentation": {
+        "overview": "https://docs.safe.global/advanced/smart-account-overview"
+      },
+      "priority": "High"
+    },
+    {
+      "name": "Safe Singleton Factory",
+      "category": "Core",
+      "description": "Standardizes contract deployment across networks for cross-chain address consistency",
+      "features": [
+        "Cross-chain deployment consistency",
+        "Identical addresses across chains",
+        "Standardized deployment process"
+      ],
+      "technicalDetails": {
+        "crossChain": true,
+        "addressConsistency": true
+      },
+      "documentation": {
+        "overview": "https://docs.safe.global/advanced/smart-account-overview"
+      },
+      "priority": "High"
+    },
+    {
+      "name": "OwnerManager",
+      "category": "Core",
+      "description": "Manages Safe owners and threshold configuration with add/remove capabilities",
+      "features": [
+        "Add/remove owner functionality",
+        "Threshold configuration",
+        "Owner enumeration",
+        "Event emission for modifications"
+      ],
+      "security": "Critical - controls access",
+      "documentation": {
+        "overview": "https://docs.safe.global/advanced/smart-account-overview"
+      },
+      "priority": "Critical"
+    },
+    {
+      "name": "Guard System",
+      "category": "Core",
+      "description": "Transaction-level policy enforcement checking if transactions should execute or be rejected",
+      "features": [
+        "Pre-transaction validation",
+        "Policy enforcement",
+        "Transaction filtering",
+        "Custom logic execution"
+      ],
+      "security": "Critical - can prevent transactions",
+      "technicalDetails": {
+        "executionPoint": "Before transaction",
+        "securityCritical": true
+      },
+      "documentation": {
+        "overview": "https://docs.safe.global/advanced/smart-account-overview"
+      },
+      "priority": "High"
+    },
+    {
+      "name": "Module System",
+      "category": "Core",
+      "description": "Pluggable contract system extending Safe capabilities with specialized functionality",
+      "features": [
+        "Separation of concerns",
+        "Pluggable architecture",
+        "Threshold-protected add/remove",
+        "Custom logic extension"
+      ],
+      "security": "Must match Safe security standards",
+      "availableModules": [
+        "Allowance Module",
+        "Recovery Module",
+        "4337 Module",
+        "Passkey Module"
+      ],
+      "documentation": {
+        "overview": "https://docs.safe.global/advanced/smart-account-overview"
+      },
+      "priority": "High"
+    },
+    {
+      "name": "Allowance Module",
+      "category": "Module",
+      "description": "Delegates limited execution permissions with spending limits",
+      "features": [
+        "Delegated permissions",
+        "Spending limits",
+        "Limited execution rights"
+      ],
+      "useCases": [
+        "Controlled delegation",
+        "Budget management",
+        "Limited access grants"
+      ],
+      "documentation": {
+        "overview": "https://docs.safe.global/advanced/smart-account-overview"
+      },
+      "priority": "Medium"
+    },
+    {
+      "name": "Recovery Module",
+      "category": "Module",
+      "description": "Enables account recovery under specified conditions",
+      "features": [
+        "Account recovery mechanisms",
+        "Configurable recovery conditions",
+        "Access regaining capabilities"
+      ],
+      "useCases": [
+        "Lost key recovery",
+        "Account restoration",
+        "Emergency access"
+      ],
+      "documentation": {
+        "overview": "https://docs.safe.global/advanced/smart-account-overview"
+      },
+      "priority": "Medium"
+    },
+    {
+      "name": "4337 Module",
+      "category": "Module",
+      "description": "Integrates ERC-4337 Account Abstraction standard",
+      "features": [
+        "ERC-4337 compliance",
+        "UserOperation support",
+        "Bundler integration",
+        "Paymaster support"
+      ],
+      "useCases": [
+        "Account abstraction",
+        "Gasless transactions",
+        "Sponsored operations"
+      ],
+      "documentation": {
+        "overview": "https://docs.safe.global/advanced/smart-account-overview"
+      },
+      "priority": "High"
+    },
+    {
+      "name": "Passkey Module",
+      "category": "Module",
+      "description": "Enables passkey-based authentication for Safe accounts",
+      "features": [
+        "Passkey authentication",
+        "Modern auth patterns",
+        "Biometric support"
+      ],
+      "useCases": [
+        "Passwordless authentication",
+        "Biometric signing",
+        "Enhanced UX"
+      ],
+      "documentation": {
+        "overview": "https://docs.safe.global/advanced/smart-account-overview"
+      },
+      "priority": "Medium"
+    },
+    {
+      "name": "Transaction Service",
+      "category": "API",
+      "description": "Tracks transactions related to Safe contracts using event indexing across supported networks",
+      "features": [
+        "Transaction tracking",
+        "Event indexing",
+        "Multi-chain support",
+        "One instance per network"
+      ],
+      "technicalDetails": {
+        "deployment": "Per-network instances",
+        "indexing": "Event-based + tracing",
+        "rateLimit": "5 requests/second"
+      },
+      "networks": "40+ including Ethereum, Polygon, Arbitrum, Optimism, Base, Gnosis Chain",
+      "documentation": {
+        "overview": "https://docs.safe.global/core-api/api-overview"
+      },
+      "priority": "Critical"
+    },
+    {
+      "name": "Events Service",
+      "category": "API",
+      "description": "Handles Safe indexing events and delivers them via HTTP webhooks",
+      "features": [
+        "Event indexing",
+        "HTTP webhook delivery",
+        "Events queue processing",
+        "Transaction Service integration"
+      ],
+      "technicalDetails": {
+        "delivery": "HTTP webhooks",
+        "integration": "Transaction Service"
+      },
+      "documentation": {
+        "overview": "https://docs.safe.global/core-api/api-overview"
+      },
+      "priority": "High"
+    },
+    {
+      "name": "Config Service",
+      "category": "API",
+      "description": "Stores supported networks and chain-specific variables as configuration registry",
+      "features": [
+        "Network configuration storage",
+        "Chain-specific variables",
+        "Configuration registry",
+        "Multi-chain support metadata"
+      ],
+      "documentation": {
+        "overview": "https://docs.safe.global/core-api/api-overview"
+      },
+      "priority": "High"
+    },
+    {
+      "name": "Client Gateway",
+      "category": "API",
+      "description": "Facade between end-users and core services, aggregating and transforming data",
+      "features": [
+        "Data aggregation",
+        "Transaction Service integration",
+        "Config Service integration",
+        "Request forwarding",
+        "Data transformation"
+      ],
+      "technicalDetails": {
+        "pattern": "Facade",
+        "aggregation": ["Transaction Service", "Config Service"]
+      },
+      "documentation": {
+        "overview": "https://docs.safe.global/core-api/api-overview"
+      },
+      "priority": "High"
+    },
+    {
+      "name": "Decoder Service",
+      "category": "API",
+      "description": "Provides decoding capabilities for transaction data",
+      "features": [
+        "Transaction data decoding",
+        "ABI interpretation",
+        "Human-readable transaction details"
+      ],
+      "documentation": {
+        "overview": "https://docs.safe.global/core-api/api-overview"
+      },
+      "priority": "Medium"
+    }
+  ],
+  "architecturePatterns": {
+    "smartContracts": "Singleton Proxy Pattern",
+    "api": "Microservices with Facade",
+    "sdk": "Modular Kit Architecture"
+  },
+  "securityModel": {
+    "primary": "Multi-signature",
+    "extensibility": "Module System",
+    "validation": "Guard System",
+    "accountAbstraction": "ERC-4337 compatible"
+  },
+  "integrationFeatures": {
+    "gasAbstraction": "Relay Kit + ERC-4337",
+    "multiSig": "Native multi-signature",
+    "batching": "Transaction batching",
+    "modules": "Pluggable module system",
+    "crossChain": "Consistent addresses across chains"
+  },
+  "nextSteps": [
+    "Clone safe-core-sdk repository for code examples",
+    "Review TypeScript type definitions in SDK packages",
+    "Explore playground scripts for integration patterns",
+    "Study smart contract source code",
+    "Test integration with Protocol Kit",
+    "Analyze ERC-4337 implementation details",
+    "Review audit reports for security assessment"
+  ],
+  "repositories": {
+    "sdk": "https://github.com/safe-global/safe-core-sdk",
+    "contracts": "https://github.com/safe-global/safe-smart-account",
+    "demo": "https://github.com/5afe/account-abstraction-demo-ui"
+  }
+}

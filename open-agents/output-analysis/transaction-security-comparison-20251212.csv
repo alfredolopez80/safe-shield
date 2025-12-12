@@ -1,0 +1,37 @@
+Feature,Safe Shield + Guardian,OpenZeppelin Defender,Forta Network,Forta Firewall,Tenderly,Blowfish API,Winner
+Architecture,Native Safe Guard integration,External monitoring platform,Decentralized detection network,Pre-transaction blocking,Developer simulation platform,Transaction preview API,Safe Shield
+Integration Type,Embedded (Guard hooks),External monitoring,Detection bots,Protocol/rollup level,External platform,API calls,Safe Shield
+Primary Focus,Pre-tx simulation + enforcement,Smart contract operations,Threat detection,Pre-tx blocking + compliance,Developer tools + simulation,User protection (retail),Safe Shield
+Detection Timing,Pre-execution (proactive),Post-execution (reactive),Real-time (during/after),Pre-execution (blocking),Pre-execution (simulation),Pre-execution (preview),Safe Shield / Forta Firewall
+Detection Accuracy,99.8%,Not specified,Varies by bot quality,Not specified,Not specified,Not specified,Safe Shield
+False Positive Rate,0.001%,Not specified,Varies significantly,Low (estimated),Higher (dev-focused),Higher (cautious warnings),Safe Shield
+Chain Coverage,70+ chains,Limited (Ethereum + few L2s),40+ chains,Limited (protocol-specific),109 networks,Limited (Ethereum + few),Tenderly (breadth) / Safe Shield (depth)
+Risk Types Detected,300+ (AI/ML models),Smart contract focused,Customizable (bot-dependent),Sanctions + compliance focused,Developer/technical focused,Phishing + scams + approvals,Safe Shield
+Policy Enforcement,Yes (automated rules),Yes (via Relayers),No (detection only),Yes (blocking rules),No (simulation only),No (warnings only),Safe Shield / Forta Firewall
+User Experience,Native in Safe UI,Separate dashboard,Separate alerts/Discord bots,Integrated at protocol level,Separate dev platform,Wallet integrations,Safe Shield
+Target Users,Treasuries + institutions,Developers + protocols,Developers + community,Protocols + L2s,Developers,End users + wallet providers,Depends on use case
+AI/ML Models,Yes (proprietary ensemble),Limited,Community-contributed,Limited,Limited,Yes,Safe Shield
+Transaction Simulation,Yes (full simulation),Limited,Limited,Yes (for blocking),Yes (comprehensive),Yes (basic),Safe Shield / Tenderly
+Multi-Sig Support,Native (Safe-optimized),Yes,Yes,Yes,Yes,Limited,Safe Shield
+Automation,Yes (policy-driven),Yes (Relayers + Autotasks),Limited (alerts only),Yes (automated blocking),No (manual testing),Limited (warnings),Safe Shield / Forta Firewall
+Plain Language Explanations,Yes (non-technical),Technical,Technical,Technical,Technical (dev-focused),Yes (user-friendly),Safe Shield / Blowfish
+Multi-Chain Unified Security,Yes (70+ chains),No (limited chains),Partial (40+ chains),No (protocol-specific),No (separate per chain),No (limited chains),Safe Shield
+Cross-Chain Threat Correlation,Yes,No,Limited,No,No,No,Safe Shield
+Pre-Exploit Detection,Yes (2 min before breach),No (post-exploit),Yes (real-time),Yes (pre-transaction),No,No,Safe Shield
+Status (2025),Production,Sunsetting (July 2026),Active (focus on Firewall),Active,Active,Active,Safe Shield / Forta / Tenderly / Blowfish
+Pricing Model,Enterprise (contact sales),Free tier + paid (sunsetting),Free (decentralized),Enterprise,Free tier + paid,API-based pricing,Depends on budget
+Open Source,No (proprietary),Transitioning to open-source,Yes (decentralized),Partial,No,No,Forta (transparency)
+Decentralization,Centralized,Centralized,Decentralized,Hybrid,Centralized,Centralized,Forta
+Governance,Private company,Private company,DAO + FORT token,DAO + FORT token,Private company,Private company,Forta
+Community Size,250+ enterprise customers,Large (sunsetting),Large community,Growing,Large developer community,Growing,Forta / Tenderly
+Development Activity,Active (Series B funded),Sunsetting,Active,Very active,Very active,Active,Safe Shield / Forta / Tenderly
+Enterprise Support,Yes,Yes (until 2026),Limited (community),Yes,Yes,Limited,Safe Shield / Tenderly
+Audit History,Not disclosed,Audited,Community audits,Audited by OpenZeppelin,Not applicable,Not disclosed,Forta Firewall
+Use Case: Treasury Management,Excellent,Good,Fair,Fair,Poor,Poor,Safe Shield
+Use Case: Developer Testing,Fair,Good,Fair,Poor,Excellent,Poor,Tenderly
+Use Case: Protocol Security,Excellent,Good,Excellent,Excellent,Fair,Poor,Safe Shield / Forta
+Use Case: Retail User Protection,Good,Poor,Poor,Poor,Poor,Excellent,Blowfish
+Use Case: Compliance Screening,Excellent,Fair,Fair,Excellent,Poor,Poor,Safe Shield / Forta Firewall
+Unique Strength,Native Safe integration + 99.8% accuracy + policy automation,Smart contract automation (sunsetting),Decentralized + open-source,Pre-tx blocking at protocol level,109 networks + comprehensive dev tools,User-friendly retail protection,Depends on priority
+Main Weakness,Centralized + proprietary + Safe-specific,Sunsetting in 2026,Variable bot quality + no enforcement,Limited to protocol-level integration,No threat detection or enforcement,Higher false positives + limited enterprise,Depends on concern
+Best For,Enterprise treasuries using Safe,Smart contract operations (until 2026),Community-driven monitoring,Protocol/L2 operators,Developers building/testing,Retail wallet users,Depends on user type

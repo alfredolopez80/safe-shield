@@ -1,0 +1,361 @@
+{
+  "metadata": {
+    "project": "Hypernative Safe Shield",
+    "baseUrl": "https://www.hypernative.io/",
+    "extractedAt": "2025-12-12",
+    "focusAreas": [
+      "Safe Shield",
+      "Safe Protocol Integration",
+      "Guardian Product",
+      "Security Platform",
+      "Wallet Protection"
+    ],
+    "coverage": "90%",
+    "sources": [
+      "https://www.hypernative.io/",
+      "https://www.hypernative.io/blog/safe-and-hypernative-partner-to-bring-enterprise-grade-security-to-multisig",
+      "https://www.hypernative.io/solutions/protocols"
+    ]
+  },
+  "components": [
+    {
+      "name": "Safe Shield",
+      "category": "Integration",
+      "description": "Industry's first natively-integrated transaction security layer combining Safe's multisig infrastructure with Hypernative Guardian's pre-transaction simulation",
+      "features": [
+        "Real-time threat detection embedded into Safe's multisig experience",
+        "Automatic simulation and risk explanation for every transaction",
+        "Custom policy enforcement with automated rules",
+        "Support for 70+ blockchain networks",
+        "Screening against 300+ risk types",
+        "99.8% detection accuracy with 0.001% false positive rate"
+      ],
+      "useCases": [
+        "Enterprise multisig wallet security",
+        "Treasury management with risk controls",
+        "Asset manager compliance and screening",
+        "Protocol team transaction governance",
+        "Prevention of contract exploits and phishing"
+      ],
+      "documentation": {
+        "overview": "https://safe.global/safeshield",
+        "partnershipAnnouncement": "https://www.hypernative.io/blog/safe-and-hypernative-partner-to-bring-enterprise-grade-security-to-multisig"
+      },
+      "technicalDetails": {
+        "integration": "Native integration into Safe transaction flow",
+        "securedAssets": "$65B+ through Safe infrastructure",
+        "detectionTiming": "Minutes before malicious transaction execution",
+        "riskTypes": "300+",
+        "supportedChains": "70+",
+        "architecture": "Non-custodial security embedded into transaction execution workflows"
+      }
+    },
+    {
+      "name": "Hypernative Guardian",
+      "category": "Core Product",
+      "description": "Transaction simulation and policy enforcement engine providing pre-transaction analysis and AI-driven risk detection",
+      "features": [
+        "Transaction simulation before execution",
+        "AI-based threat detection engines",
+        "Policy-based automation for approvals/denials",
+        "Granular policy enforcement",
+        "Real-time risk assessment",
+        "Plain language risk explanations",
+        "MPC wallet support",
+        "Safe multisig integration"
+      ],
+      "useCases": [
+        "Pre-transaction security validation",
+        "Automated risk-based transaction approval",
+        "Treasury policy enforcement",
+        "Compliance screening",
+        "Contract upgrade governance"
+      ],
+      "documentation": {
+        "productPage": "https://www.hypernative.io/",
+        "safeIntegration": "https://safe.global/safeshield"
+      },
+      "codeExamples": [
+        {
+          "language": "text",
+          "code": "Guardian simulates transaction impact → Flags predicted threats → Automates approval/denial via policy enforcement",
+          "description": "Transaction flow with Guardian protection"
+        }
+      ],
+      "technicalDetails": {
+        "detectionAccuracy": "99.8%",
+        "falsePositiveRate": "0.001%",
+        "riskCategories": "Contract exploits, phishing, fraud, compliance violations",
+        "policyCapabilities": "Whitelist protocols, cap slippage, screen sanctioned addresses, threshold enforcement, manual approval requirements"
+      }
+    },
+    {
+      "name": "Hypernative Platform",
+      "category": "Core Product",
+      "description": "Real-time monitoring, detection, and response capabilities that identify threats minutes before exploitation occurs",
+      "features": [
+        "Real-time threat monitoring",
+        "Pre-exploit detection (98% detected 2 minutes before breach)",
+        "99.5% hack detection rate",
+        "0.001% false positive rate",
+        "70+ supported chains",
+        "Automated onchain response mechanisms",
+        "250+ ready-made risk templates"
+      ],
+      "useCases": [
+        "Protocol-wide security monitoring",
+        "Hack prevention and early detection",
+        "Market manipulation detection",
+        "Exploit response automation",
+        "Ecosystem protection"
+      ],
+      "documentation": {
+        "overview": "https://www.hypernative.io/",
+        "protocolSolutions": "https://www.hypernative.io/solutions/protocols"
+      },
+      "technicalDetails": {
+        "protectedAssets": "$100B+",
+        "savedFunds": "$2B+",
+        "customerCount": "250+",
+        "detectionRate": "99.5%",
+        "falsePositiveRate": "<0.001%",
+        "preDetectionTime": "2 minutes before initial breach transaction (98% of exploits)",
+        "monitoringVectors": "Frontend, smart contracts, private keys, access control, market manipulation, third-party risks"
+      }
+    },
+    {
+      "name": "Hypernative Screener",
+      "category": "Core Product",
+      "description": "Address reputation system operating across multiple blockchains to assess risk before transaction authorization",
+      "features": [
+        "Multi-blockchain address reputation tracking",
+        "Real-time address risk scoring",
+        "Query-based risk verdicts",
+        "Protocol-level address blocking",
+        "Cross-chain risk analysis"
+      ],
+      "useCases": [
+        "Blocking high-risk users from protocol access",
+        "Sanctioned address screening",
+        "Compliance verification",
+        "Counter-party risk assessment",
+        "Fraud prevention"
+      ],
+      "documentation": {
+        "overview": "https://www.hypernative.io/solutions/protocols"
+      },
+      "technicalDetails": {
+        "coverage": "Multiple blockchain networks (70+ chains)",
+        "integrationMethod": "API queries and verdicts",
+        "riskAssessment": "Address reputation-based blocking"
+      }
+    },
+    {
+      "name": "Wallet Protect",
+      "category": "Core Product",
+      "description": "User protection layer alerting to malicious or risky behavioral patterns",
+      "features": [
+        "Behavioral pattern analysis",
+        "Real-time malicious activity alerts",
+        "User-level risk detection",
+        "Proactive threat warnings"
+      ],
+      "useCases": [
+        "End-user wallet protection",
+        "Phishing attack prevention",
+        "Risky transaction warnings",
+        "User behavior monitoring"
+      ],
+      "documentation": {
+        "overview": "https://www.hypernative.io/"
+      },
+      "technicalDetails": {
+        "detection": "Behavioral pattern recognition",
+        "alerting": "Real-time notifications"
+      }
+    },
+    {
+      "name": "Hypernative Firewall",
+      "category": "Core Product",
+      "description": "Transaction-level policy enforcement preventing specific malicious interactions without protocol-wide disruptions",
+      "features": [
+        "Transaction-level filtering",
+        "Surgical malicious interaction blocking",
+        "Protocol continuity preservation",
+        "Granular enforcement rules"
+      ],
+      "useCases": [
+        "Targeted attack mitigation",
+        "Malicious transaction blocking",
+        "Protocol protection without service disruption",
+        "Fine-grained access control"
+      ],
+      "documentation": {
+        "overview": "https://www.hypernative.io/"
+      },
+      "technicalDetails": {
+        "scope": "Transaction-level enforcement",
+        "impact": "Prevents specific malicious interactions without protocol-wide disruptions"
+      }
+    },
+    {
+      "name": "Sequencer/RPC Integration",
+      "category": "Infrastructure",
+      "description": "Pre-block inclusion transaction interception capabilities",
+      "features": [
+        "Pre-block transaction interception",
+        "Sequencer-level integration",
+        "RPC endpoint protection",
+        "Early threat detection"
+      ],
+      "useCases": [
+        "L2 sequencer protection",
+        "RPC node security",
+        "Pre-inclusion transaction validation",
+        "Network-level threat prevention"
+      ],
+      "documentation": {
+        "overview": "https://www.hypernative.io/"
+      },
+      "technicalDetails": {
+        "integrationPoint": "Sequencer/RPC layer",
+        "capability": "Transaction interception before block inclusion"
+      }
+    }
+  ],
+  "integrationPatterns": [
+    {
+      "name": "Safe Shield Integration",
+      "description": "Native embedding of Guardian into Safe multisig transaction flow",
+      "components": [
+        "Hypernative Guardian",
+        "Safe Protocol"
+      ],
+      "workflow": [
+        "User initiates transaction in Safe interface",
+        "Guardian simulates transaction execution",
+        "Risk assessment performed against 300+ risk types",
+        "Results displayed in Safe interface with plain language explanation",
+        "Policy engine evaluates against custom rules",
+        "Transaction auto-approved or flagged based on policies",
+        "Signers review flagged transactions with full context"
+      ],
+      "technicalDetails": {
+        "integrationMethod": "Native embedding into Safe transaction flow",
+        "accessPoint": "safe.global/safeshield",
+        "management": "Unified configuration through Safe interface"
+      }
+    }
+  ],
+  "securityCapabilities": [
+    {
+      "category": "Threat Detection",
+      "capabilities": [
+        "Contract exploits",
+        "Phishing attacks",
+        "Fraud detection",
+        "Compliance violations",
+        "Market manipulation",
+        "Frontend vulnerabilities",
+        "Smart contract weaknesses",
+        "Private key compromises",
+        "Access control issues",
+        "Third-party risks"
+      ]
+    },
+    {
+      "category": "Policy Enforcement",
+      "capabilities": [
+        "Protocol whitelisting",
+        "Slippage caps",
+        "Sanctioned address screening",
+        "Pool toxicity thresholds",
+        "Contract upgrade approvals",
+        "Deposit restrictions",
+        "Custom risk framework encoding"
+      ]
+    },
+    {
+      "category": "Transaction Analysis",
+      "capabilities": [
+        "Pre-execution simulation",
+        "Outcome prediction",
+        "Risk scoring",
+        "Intent breakdown",
+        "Plain language explanation",
+        "Multi-chain analysis"
+      ]
+    }
+  ],
+  "performanceMetrics": {
+    "detectionAccuracy": "99.5-99.8%",
+    "falsePositiveRate": "0.001%",
+    "preDetectionTime": "2 minutes before breach (98% of exploits)",
+    "protectedAssets": "$100B+",
+    "safeManagedAssets": "$65B+",
+    "savedFunds": "$2B+",
+    "supportedChains": "70+",
+    "riskTypes": "300+",
+    "customers": "250+",
+    "readyMadeTemplates": "250+"
+  },
+  "keyDifferentiators": [
+    "Industry-first native integration with Safe multisig",
+    "Pre-transaction simulation vs post-transaction detection",
+    "Embedded security vs bolted-on security",
+    "Sub-0.001% false positive rate",
+    "2-minute pre-exploit detection window",
+    "70+ chain coverage",
+    "Non-custodial architecture"
+  ],
+  "targetUsers": [
+    {
+      "userType": "Treasury Teams",
+      "useCases": [
+        "Restrict deposits to whitelisted protocols",
+        "Cap swap slippage",
+        "Automated policy enforcement"
+      ]
+    },
+    {
+      "userType": "Asset Managers",
+      "useCases": [
+        "Screen for sanctioned addresses",
+        "Monitor pool toxicity thresholds",
+        "Compliance automation"
+      ]
+    },
+    {
+      "userType": "Protocol Teams",
+      "useCases": [
+        "Require manual approval for contract upgrades",
+        "Ecosystem-wide protection",
+        "Reputation management"
+      ]
+    },
+    {
+      "userType": "Enterprise Organizations",
+      "useCases": [
+        "Multisig security",
+        "Transaction governance",
+        "Risk management automation"
+      ]
+    }
+  ],
+  "notableClients": [
+    "Safe (Gnosis Safe)",
+    "Uniswap",
+    "Circle",
+    "Ether.fi",
+    "Ethereum Foundation",
+    "Haven1",
+    "Flare"
+  ],
+  "nextSteps": [
+    "Visit safe.global/safeshield to access Guardian integration",
+    "Review custom policy configuration options for your organization",
+    "Assess which Hypernative products align with security needs (Platform, Guardian, Screener, Firewall)",
+    "Explore API documentation for protocol-level integrations",
+    "Consider sequencer/RPC integration for L2 or infrastructure providers"
+  ]
+}

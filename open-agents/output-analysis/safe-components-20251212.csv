@@ -1,0 +1,22 @@
+Category,Name,Description,Documentation URL,Complexity,Priority,Has Examples
+SDK,Starter Kit,Entry point for Safe smart account interaction with simplified workflows,https://docs.safe.global/sdk/starter-kit,Low,High,Yes
+SDK,Protocol Kit,Core interaction layer for account creation and transaction execution,https://docs.safe.global/sdk/protocol-kit,Medium-High,High,Yes
+SDK,API Kit,Integration with Transaction Service API for multi-sig coordination,https://docs.safe.global/sdk/api-kit,Medium,High,Yes
+SDK,Relay Kit,Transaction relaying and gas abstraction with ERC-4337,https://docs.safe.global/sdk/relay-kit,Medium,Medium,Yes
+SDK,React Hooks,Frontend integration layer for React applications,https://docs.safe.global/sdk/react-hooks,Low,Medium,Yes
+Core,Safe Singleton,Main implementation contract with execution logic,https://docs.safe.global/advanced/smart-account-overview,N/A,Critical,Yes
+Core,Safe Proxy,Lightweight proxy delegating to Singleton,https://docs.safe.global/advanced/smart-account-overview,N/A,Critical,Yes
+Core,Safe Proxy Factory,Deploys Safe Proxy contracts with setup,https://docs.safe.global/advanced/smart-account-overview,N/A,High,Yes
+Core,Safe Singleton Factory,Cross-chain deployment standardization,https://docs.safe.global/advanced/smart-account-overview,N/A,High,Yes
+Core,OwnerManager,Manages Safe owners and threshold configuration,https://docs.safe.global/advanced/smart-account-overview,N/A,Critical,Yes
+Core,Guard System,Transaction-level policy enforcement,https://docs.safe.global/advanced/smart-account-overview,N/A,High,Yes
+Core,Module System,Pluggable contract system for extensibility,https://docs.safe.global/advanced/smart-account-overview,N/A,High,Yes
+Module,Allowance Module,Delegates limited execution permissions,https://docs.safe.global/advanced/smart-account-overview,N/A,Medium,Yes
+Module,Recovery Module,Enables account recovery mechanisms,https://docs.safe.global/advanced/smart-account-overview,N/A,Medium,Yes
+Module,4337 Module,ERC-4337 Account Abstraction integration,https://docs.safe.global/advanced/smart-account-overview,N/A,High,Yes
+Module,Passkey Module,Passkey-based authentication support,https://docs.safe.global/advanced/smart-account-overview,N/A,Medium,Yes
+API,Transaction Service,Multi-chain transaction tracking via event indexing,https://docs.safe.global/core-api/api-overview,N/A,Critical,Yes
+API,Events Service,Event indexing with HTTP webhook delivery,https://docs.safe.global/core-api/api-overview,N/A,High,Yes
+API,Config Service,Network configuration and chain variables registry,https://docs.safe.global/core-api/api-overview,N/A,High,Yes
+API,Client Gateway,Facade aggregating Transaction and Config Services,https://docs.safe.global/core-api/api-overview,N/A,High,Yes
+API,Decoder Service,Transaction data decoding capabilities,https://docs.safe.global/core-api/api-overview,N/A,Medium,Yes

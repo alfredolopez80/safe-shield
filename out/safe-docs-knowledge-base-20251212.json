@@ -1,0 +1,432 @@
+{
+  "source": "https://docs.safe.global/home/what-is-safe",
+  "fetchedAt": "2025-12-12T00:00:00Z",
+  "config": {
+    "effective": {
+      "depth": 2,
+      "maxPages": 15,
+      "dynamic": "never",
+      "focus": ["Safe SDK", "Safe Core", "Safe API Kit"]
+    }
+  },
+  "records": [
+    {
+      "title": "Safe Platform Overview",
+      "url": "https://docs.safe.global/home/what-is-safe",
+      "category": "overview",
+      "description": "Safe is at the forefront of modular smart account infrastructure, paving the way for developers to create various applications and wallets. The platform establishes universal and open contract standards for the custody of digital assets, data, and identity.",
+      "keyPoints": [
+        "Modular smart account infrastructure",
+        "Universal contract standards for digital asset custody",
+        "Two primary offerings: Safe{Core} (infrastructure) and Safe{Wallet} (user interface)",
+        "AI agent capabilities with spending limits and DeFi integrations"
+      ],
+      "components": {
+        "safeCore": "Infrastructure tooling for integrating Smart Accounts and leveraging account abstraction",
+        "safeWallet": "User-facing interface for digital asset management"
+      },
+      "technicalLinks": [
+        "https://docs.safe.global/sdk/overview",
+        "https://docs.safe.global/core-api/api-overview",
+        "https://docs.safe.global/advanced/smart-account-overview"
+      ]
+    },
+    {
+      "title": "Safe{Core} SDK",
+      "url": "https://docs.safe.global/sdk/overview",
+      "category": "sdk",
+      "description": "The Safe{Core} SDK comprises four integrated kits designed to streamline Account Abstraction implementation with modular, battle-tested components.",
+      "architecture": {
+        "kits": [
+          {
+            "name": "Starter Kit",
+            "package": "@safe-global/sdk-starter-kit",
+            "purpose": "Entry point for Smart Account interaction",
+            "features": [
+              "Abstracts complexity from other components",
+              "Handles user operations (ERC-4337)",
+              "Multi-signature transactions",
+              "Off-chain and on-chain messaging"
+            ],
+            "useCases": [
+              "Simplified account deployment",
+              "Transaction flow management",
+              "ERC-4337 integration"
+            ],
+            "githubUrl": "https://github.com/safe-global/safe-core-sdk/tree/main/packages/sdk-starter-kit"
+          },
+          {
+            "name": "Protocol Kit",
+            "package": "@safe-global/protocol-kit",
+            "purpose": "Direct engagement with Safe Smart Accounts",
+            "features": [
+              "Create and configure new accounts",
+              "Transaction signing and execution",
+              "Modular and customizable smart contract accounts",
+              "Battle-tested security",
+              "Transaction batching",
+              "Owner management",
+              "Module integration"
+            ],
+            "useCases": [
+              "Safe account deployment (single and multichain)",
+              "Transaction execution workflows",
+              "Signature handling for transactions and messages",
+              "Configuration updates for existing Safes"
+            ],
+            "githubUrl": "https://github.com/safe-global/safe-core-sdk/tree/main/packages/protocol-kit",
+            "technicalCapabilities": [
+              "TypeScript interface for Safe Smart Accounts",
+              "Proposing and executing transactions",
+              "Managing signatures for transactions and messages",
+              "Version migration support (v1-v6)"
+            ]
+          },
+          {
+            "name": "API Kit",
+            "package": "@safe-global/api-kit",
+            "purpose": "Interface with Safe Transaction Service API",
+            "features": [
+              "Transaction sharing among signers",
+              "Account configuration retrieval",
+              "Transaction history access",
+              "Off-chain signature collection",
+              "Multi-signer coordination"
+            ],
+            "useCases": [
+              "Propose transactions and collect signatures",
+              "Retrieve Safe information (transaction history, pending transactions)",
+              "Manage enabled Modules and Guards",
+              "Coordinate multi-signature workflows"
+            ],
+            "githubUrl": "https://github.com/safe-global/safe-core-sdk/tree/main/packages/api-kit",
+            "apiDocUrl": "https://docs.safe.global/reference-sdk-api-kit/overview"
+          },
+          {
+            "name": "Relay Kit",
+            "package": "@safe-global/relay-kit",
+            "purpose": "Transaction relaying and gas abstraction",
+            "features": [
+              "ERC-4337 integration",
+              "Gelato-powered gas-less experiences",
+              "Sponsored transactions",
+              "ERC-20 token fee payment",
+              "Flexible gas payment options"
+            ],
+            "useCases": [
+              "Enable users to pay fees with native tokens",
+              "Pay transaction fees with ERC-20 tokens",
+              "Implement sponsored/gasless transactions",
+              "Integrate ERC-4337 Safe accounts"
+            ],
+            "relayProviders": [
+              "ERC-4337",
+              "Gelato Relay"
+            ],
+            "githubUrl": "https://github.com/safe-global/safe-core-sdk/tree/main/packages/relay-kit",
+            "migrationVersions": [2, 3, 4]
+          }
+        ],
+        "additionalPackages": [
+          {
+            "name": "Types Kit",
+            "package": "@safe-global/types-kit",
+            "purpose": "Common types used across Safe Core SDK packages"
+          }
+        ]
+      },
+      "keyFeatures": [
+        "Account Abstraction integration through modular design",
+        "Diverse signing mechanisms support",
+        "Multi-chain transaction flows",
+        "Battle-tested security",
+        "Comprehensive TypeScript support"
+      ],
+      "githubUrl": "https://github.com/safe-global/safe-core-sdk"
+    },
+    {
+      "title": "Safe Core - Smart Account Architecture",
+      "url": "https://docs.safe.global/advanced/smart-account-overview",
+      "category": "core",
+      "description": "Safe Smart Accounts are built on a proxy pattern architecture with modular components enabling secure, flexible multi-signature account management.",
+      "coreComponents": [
+        {
+          "name": "Safe Singleton Contract",
+          "description": "Main contract holding logic for signature verification, executing transactions, managing owners, modules, and fallback handler",
+          "pattern": "Single deployed instance used by all Safe proxies via delegation"
+        },
+        {
+          "name": "SafeProxy",
+          "description": "Lightweight proxy contract that delegates all calls to the Safe Singleton",
+          "benefits": [
+            "Reduced deployment costs",
+            "Smaller bytecode than full Safe contract"
+          ]
+        },
+        {
+          "name": "Owner Management",
+          "contract": "OwnerManager.sol",
+          "features": [
+            "Add, remove, and replace account owners",
+            "Set signature threshold",
+            "Configure required number of confirmations"
+          ]
+        },
+        {
+          "name": "Module Management",
+          "description": "Smart contracts that implement Safe's functionality while separating module logic from Safe's core contract",
+          "availableModules": [
+            {
+              "name": "Allowance Module",
+              "purpose": "Daily spending limits without multi-sig approval"
+            },
+            {
+              "name": "Recovery Module",
+              "purpose": "Account recovery mechanisms if access is lost"
+            },
+            {
+              "name": "4337 Module",
+              "purpose": "ERC-4337 standard compliance for account abstraction"
+            },
+            {
+              "name": "Passkey Module",
+              "purpose": "Biometric and hardware security key support"
+            }
+          ],
+          "securityWarning": "Safe Modules can be a security risk since they can execute arbitrary transactions. Only add trusted and audited modules to a Safe."
+        },
+        {
+          "name": "Guard Management",
+          "description": "Transaction validation through guards that check if a transaction should be executed or rejected based on defined logic"
+        }
+      ],
+      "securityModel": {
+        "type": "Multi-signature default",
+        "description": "A threshold of owners must confirm a transaction before execution to provide a secure default without trusting any additional contract",
+        "features": [
+          "Configurable signature threshold",
+          "Multi-owner validation",
+          "No single point of failure"
+        ]
+      },
+      "keyFeatures": [
+        {
+          "feature": "Token callback support",
+          "standards": ["ERC-721", "ERC-1155"]
+        },
+        {
+          "feature": "Sponsored transactions",
+          "capability": "Enable ERC20 token gas payments"
+        },
+        {
+          "feature": "Delegatecall support",
+          "capability": "Complex execution logic"
+        },
+        {
+          "feature": "Batched transactions",
+          "capability": "Multiple operations in one signature"
+        }
+      ],
+      "moduleSystem": {
+        "architecture": "Separate smart contract extensions alongside core multi-sig mechanism",
+        "executionFlow": [
+          "User interaction triggers module function call",
+          "Module validates authorization and rule compliance",
+          "Module invokes execTransactionFromModule on Safe",
+          "Transaction executes if all conditions are met"
+        ],
+        "benefits": [
+          "Automation of recurring transactions without manual approvals",
+          "Security enhancements (spending caps, whitelists, rate limiting)",
+          "Scalability through delegation of complex operations",
+          "Flexibility for DAOs, DeFi protocols, and custom workflows"
+        ]
+      }
+    },
+    {
+      "title": "Safe{Core} Infrastructure API",
+      "url": "https://docs.safe.global/core-api/api-overview",
+      "category": "api",
+      "description": "Safe{Core} Infrastructure comprises interconnected services that power Safe{Wallet} with transaction tracking, event delivery, and multi-chain support.",
+      "services": [
+        {
+          "name": "Safe Transaction Service",
+          "purpose": "Track transactions related to Safe contracts across supported networks",
+          "technology": "Python-based backend with event indexing",
+          "capabilities": [
+            "Transaction tracking and persistence",
+            "Off-chain signature collection",
+            "Multi-signature operation coordination",
+            "Transaction state queries",
+            "Asynchronous signature collection",
+            "Notification of pending transactions"
+          ],
+          "indexingMethods": [
+            {
+              "method": "Tracing",
+              "networks": ["Ethereum Mainnet", "Sepolia", "Gnosis Chain"]
+            },
+            {
+              "method": "Event Indexing",
+              "networks": ["Other supported networks"]
+            }
+          ],
+          "apiType": "REST API",
+          "primaryClient": "API Kit (TypeScript library)",
+          "githubUrl": "https://github.com/safe-global/safe-transaction-service"
+        },
+        {
+          "name": "Safe Events Service",
+          "purpose": "Handle Safe indexing and deliver notifications",
+          "features": [
+            "Real-time event notifications",
+            "HTTP webhook delivery",
+            "Transaction indexing notifications to Client Gateway"
+          ]
+        },
+        {
+          "name": "Safe Client Gateway",
+          "purpose": "Facade between end users and core services",
+          "responsibilities": [
+            "Query Config Service for Transaction Service instances",
+            "Route requests to appropriate Transaction Service",
+            "Transform and aggregate data from multiple services",
+            "Receive webhook notifications from Event Service"
+          ]
+        },
+        {
+          "name": "Safe Config Service",
+          "purpose": "Store supported networks and chain-specific configuration",
+          "docUrl": "https://docs.safe.global/config-service-configuration/overview"
+        }
+      ],
+      "integrationFlow": [
+        "Client Gateway queries Config Service for appropriate Transaction Service instance",
+        "Request routes to specified Transaction Service",
+        "Client Gateway transforms and aggregates data from multiple services",
+        "Event Service notifies Client Gateway of indexed events via webhooks"
+      ],
+      "apiConstraints": {
+        "rateLimit": "5 requests per second",
+        "authentication": "API key-based authentication available"
+      },
+      "networkSupport": {
+        "mainChains": [
+          "Ethereum Mainnet",
+          "Ethereum Sepolia",
+          "Gnosis Chain",
+          "Chiado Testnet"
+        ],
+        "layer2Solutions": [
+          "Arbitrum",
+          "Optimism",
+          "Polygon",
+          "Base",
+          "zkSync",
+          "Scroll",
+          "Linea",
+          "Mantle"
+        ],
+        "alternativeChains": [
+          "Celo",
+          "Berachain",
+          "Sonic",
+          "Worldchain"
+        ]
+      },
+      "infrastructureUrl": "https://github.com/safe-global/safe-infrastructure"
+    },
+    {
+      "title": "ERC-4337 Account Abstraction Integration",
+      "url": "https://docs.safe.global/advanced/erc-4337/overview",
+      "category": "advanced",
+      "description": "ERC-4337 enables account abstraction without protocol-level changes, introducing flexible gas payment and authentication mechanisms.",
+      "coreConcepts": [
+        {
+          "concept": "UserOperation",
+          "description": "Pseudo-transaction object that sends a transaction on behalf of the user",
+          "purpose": "Enable account abstraction at application layer"
+        },
+        {
+          "concept": "Bundlers",
+          "description": "Network nodes that collect multiple user operations and pack them into bundle transactions",
+          "destination": "Single global EntryPoint smart contract"
+        },
+        {
+          "concept": "EntryPoint",
+          "description": "Global smart contract that receives bundled user operations",
+          "scope": "Single contract for all ERC-4337 operations"
+        },
+        {
+          "concept": "Paymasters",
+          "description": "Decentralized mechanism allowing flexible gas payment options",
+          "capabilities": [
+            "Pay with ERC-20 tokens (e.g., USDC instead of ETH)",
+            "Third-party sponsored transactions",
+            "Gasless user experiences"
+          ]
+        }
+      ],
+      "primaryAdvantages": [
+        {
+          "advantage": "Payment Flexibility",
+          "description": "Users choose payment methods—native tokens, ERC-20 alternatives, or sponsored gas"
+        },
+        {
+          "advantage": "Authentication Freedom",
+          "description": "Supports multi-signature, passkeys, and future quantum-resistant cryptography"
+        },
+        {
+          "advantage": "Decentralization",
+          "description": "Multiple provider support prevents relayer lock-in and eliminates single points of failure"
+        }
+      ],
+      "implementationStatus": "Under active development - monitor ongoing changes before full production deployment",
+      "safeIntegration": {
+        "relayKit": "Enables ERC-4337 integration with Safe accounts",
+        "features": [
+          "User operation creation and submission",
+          "Bundler integration",
+          "Paymaster support for sponsored transactions",
+          "Gas payment flexibility"
+        ]
+      }
+    }
+  ],
+  "stats": {
+    "pagesVisited": 15,
+    "itemsExtracted": 5,
+    "categoriesAnalyzed": [
+      "overview",
+      "sdk",
+      "core",
+      "api",
+      "advanced"
+    ],
+    "componentsDocumented": {
+      "sdkKits": 4,
+      "coreServices": 4,
+      "smartAccountComponents": 5,
+      "modules": 4,
+      "erc4337Components": 4
+    }
+  },
+  "metadata": {
+    "extractionMethod": "WebFetch with structured prompting",
+    "focusAreas": [
+      "Safe SDK architecture and packages",
+      "Safe Core smart account components",
+      "Safe API Kit and Transaction Service",
+      "ERC-4337 integration",
+      "Module system"
+    ],
+    "documentationQuality": "High - comprehensive official documentation",
+    "codeExamplesAvailable": "Limited in web docs - refer to GitHub repositories for detailed examples",
+    "nextSteps": [
+      "Access GitHub repositories for code examples",
+      "Review playground scripts in safe-core-sdk repository",
+      "Explore API reference documentation for detailed method signatures",
+      "Test integration patterns using provided guides"
+    ]
+  }
+}
