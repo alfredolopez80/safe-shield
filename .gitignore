@@ -1,6 +1,9 @@
 # OS files
 .DS_Store
 Thumbs.db
+.cursor/
+.claude/
+.gemini/
 
 # Editor directories
 .idea/

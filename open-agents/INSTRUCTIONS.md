@@ -24,21 +24,32 @@ This pattern keeps context small while allowing complex agent behaviors.
 safe-shield/
 ├── CLAUDE.md                          # Entry point (with pointer to this file)
 ├── AGENTS.md                          # Entry point for Codex
+├── GEMINI.md                          # Entry point for Gemini CLI
 │
-├── .claude/commands/safe/             # Slash commands for Claude Code
-│   ├── scrape.md                      # /safe scrape command
-│   └── research.md                    # /safe research command
+├── .claude/commands/                  # Slash commands for Claude Code
+│   ├── safe/
+│   │   ├── scrape.md                  # /safe scrape command
+│   │   └── research.md                # /safe research command
+│   ├── review/
+│   │   └── audit.md                   # /review audit command
+│   └── notion/
+│       └── create-post.md             # /notion create-post command
+│
+├── .gemini/commands/                  # Slash commands for Gemini CLI
+│   └── (same structure as .claude)
 │
 └── open-agents/                       # Agent system container
     ├── README.md                      # Human-readable intro
     ├── INSTRUCTIONS.md                # This file (agent catalog)
     │
     ├── agents/                        # Agent definitions
-    │   ├── web-scraper.md             # Documentation scraping agent
-    │   └── research-blockchain.md     # Technical research agent
+    │   ├── web-scraper.md                      # Documentation scraping
+    │   ├── research-blockchain.md              # Technical research
+    │   ├── ai-code-auditor.md                  # Code review & AI detection
+    │   └── notion-technical-post-generator.md  # Notion post creation
     │
     ├── tools/                         # Scripts created by agents
-    │   └── (future automation scripts)
+    │   └── (automation scripts)
     │
     ├── source/                        # Raw inputs and research notes
     │   └── (user-provided stubs, URLs, notes)
@@ -46,11 +57,11 @@ safe-shield/
     ├── output-research/               # Raw data extraction
     │   └── (JSON knowledge bases, raw scrapes)
     │
-    ├── output-analysis/               # Analytical outputs
-    │   └── (CSV comparisons, diagrams, metrics)
+    ├── output-analysis/               # Analytical outputs & audit reports
+    │   └── (CSV, diagrams, metrics, audit reports, proposed fixes)
     │
     └── output-reports/                # Final deliverables
-        └── (markdown reports, technical analyses)
+        └── (markdown reports, technical analyses, Notion posts)
 ```
 
 ---
@@ -62,18 +73,21 @@ safe-shield/
 **Purpose**: Extract and structure information from technical documentation websites.
 
 **Specialized for**:
+
 - Navigating complex documentation hierarchies
 - Extracting API specifications, SDK docs, and guides
 - Generating structured outputs (JSON, Markdown, CSV)
 - Building comprehensive knowledge bases from web sources
 
 **When to use**:
+
 - User asks to "scrape" or "analyze" documentation
 - User wants to "extract" or "map out" documentation
 - User provides a documentation URL and wants structured data
 - User needs comprehensive documentation coverage analysis
 
 **Output locations**:
+
 - JSON: `output-research/{project}-knowledge-base-{date}.json`
 - Markdown: `output-reports/{project}-analysis-{date}.md`
 - CSV: `output-analysis/{project}-components-{date}.csv`
@@ -89,6 +103,7 @@ safe-shield/
 **Purpose**: Conduct deep technical analysis of blockchain protocols, smart contracts, and Web3 systems.
 
 **Specialized for**:
+
 - Architectural analysis of blockchain protocols
 - Smart contract security and mechanism review
 - Comparative analysis across similar protocols
@@ -97,6 +112,7 @@ safe-shield/
 - Risk assessment and security auditing
 
 **When to use**:
+
 - User asks to "research" or "analyze" a blockchain protocol
 - User wants "technical analysis" or "deep dive"
 - User needs "comparison" between protocols
@@ -105,6 +121,7 @@ safe-shield/
 - User wants to understand integration patterns
 
 **Output locations**:
+
 - Technical Report: `output-reports/{protocol}-technical-analysis-{date}.md`
 - Comparison: `output-analysis/{topic}-comparison-{date}.csv`
 - Diagrams: `output-analysis/{protocol}-architecture-{date}.mmd`
@@ -112,6 +129,73 @@ safe-shield/
 **To use this agent**: Read `open-agents/agents/research-blockchain.md`
 
 **Slash command**: `/safe research [protocol/topic] [focus areas]`
+
+---
+
+### 3. AI Output & Code Review Super-Auditor (`agents/ai-code-auditor.md`)
+
+**Purpose**: Ensemble-style AI detector and manual verifier for comprehensive quality, security, and reliability audits of technical artifacts.
+
+**Specialized for**:
+
+- AI-style pattern detection in code and documentation
+- Security vulnerability identification (injection, XSS, authz bypass, crypto issues)
+- Code quality assessment (maintainability, readability, testing)
+- Hallucination and factual accuracy verification
+- Deep structured review with concrete improvement suggestions
+- Senior-engineer quality standards enforcement
+
+**When to use**:
+
+- User asks to "review" or "audit" code for AI patterns and quality issues
+- User wants to "check for hallucinations" or "verify factual accuracy"
+- User needs "security review" or "code audit"
+- User asks to "assess quality" of technical artifacts
+- User wants to "detect AI-generated content"
+- User needs "comprehensive code review" before deployment
+
+**Output locations**:
+
+- Audit Reports: `output-analysis/{artifact-name}-audit-{date}.md`
+- Proposed Fixes: `output-analysis/{artifact-name}-fixes-{date}/`
+
+**To use this agent**: Read `open-agents/agents/ai-code-auditor.md`
+
+**Slash command**: `/review audit [artifact] [focus]`
+
+---
+
+### 4. Technical Research to Notion Post Generator (`agents/notion-technical-post-generator.md`)
+
+**Purpose**: Transform blockchain/Web3 technical research into professional, publication-ready Notion posts.
+
+**Specialized for**:
+
+- Structured Notion post creation with proper hierarchy
+- Mermaid diagram integration (architecture, sequence, comparison)
+- Citation and reference management with authoritative sources
+- Senior technical audience targeting (blockchain engineers, researchers)
+- Analytical narrative flow with single coherent thesis
+- Code examples, API documentation, and technical specifications
+- Comparative analysis with structured tables and matrices
+
+**When to use**:
+
+- User asks to "create a Notion post" from research
+- User wants to "transform analysis into publication format"
+- User needs "professional documentation" of technical research
+- User asks to "write a technical post" about blockchain/Web3
+- User wants to "publish research findings" in structured format
+- User needs "comprehensive technical documentation" with diagrams
+
+**Output locations**:
+
+- Notion Posts: `output-reports/{protocol-name}-notion-post-{date}.md`
+- Assets: `output-analysis/{protocol-name}-assets-{date}/`
+
+**To use this agent**: Read `open-agents/agents/notion-technical-post-generator.md`
+
+**Slash command**: `/notion create-post [source-material] [focus]`
 
 ---
 
@@ -129,6 +213,14 @@ safe-shield/
 | "Extract Safe API reference" | Web Scraper | API-specific extraction |
 | "Safe SDK integration guide" | Research Blockchain | Integration-focused |
 | "Complete Safe analysis" | Web Scraper → Research Blockchain | Chain both agents |
+| "Review this code for quality" | AI Code Auditor | Code/content review |
+| "Audit for AI-generated patterns" | AI Code Auditor | AI-style detection |
+| "Check this for hallucinations" | AI Code Auditor | Factual verification |
+| "Security review of this contract" | AI Code Auditor | Security-focused audit |
+| "Create Notion post from research" | Notion Post Generator | Publication formatting |
+| "Transform analysis to Notion" | Notion Post Generator | Professional documentation |
+| "Write technical post about [protocol]" | Notion Post Generator | Structured post creation |
+| "Publish research findings" | Notion Post Generator | Publication-ready output |
 
 ---
 
@@ -147,6 +239,7 @@ safe-shield/
 **When to use**: User wants complete understanding of a protocol
 
 **Command sequence**:
+
 ```
 /safe scrape https://docs.safe.global/home/what-is-safe SDK,Core,API
 /safe research Safe SDK,Core,API
@@ -165,6 +258,7 @@ safe-shield/
 **When to use**: User has specific technical questions, doesn't need full documentation extraction
 
 **Command**:
+
 ```
 /safe research "How does Safe's ERC-4337 integration work?"
 ```
@@ -184,6 +278,7 @@ safe-shield/
 **When to use**: User needs to choose between protocols or understand landscape
 
 **Command**:
+
 ```
 /safe research "Compare Safe, Argent, and Braavos"
 ```
@@ -195,24 +290,28 @@ safe-shield/
 When researching Safe, prioritize these components:
 
 ### Safe SDK
+
 - **Starter Kit**: Entry point for new developers
 - **Protocol Kit**: Core interactions with Safe contracts
 - **API Kit**: Transaction Service integration
 - **Relay Kit**: ERC-4337 and gasless transactions
 
 ### Safe Core
+
 - **Smart Account Architecture**: Proxy pattern, Singleton
 - **Owner Management**: Multi-sig mechanisms
 - **Module System**: Allowance, Recovery, 4337, Passkey modules
 - **Guard System**: Transaction validation
 
 ### Safe API Infrastructure
+
 - **Transaction Service**: Multi-sig transaction coordination
 - **Events Service**: Webhook notifications
 - **Client Gateway**: Aggregated data access
 - **Config Service**: Network configurations
 
 ### Safe Integration Patterns
+
 - **Account Abstraction**: ERC-4337 implementation
 - **DeFi Integration**: CoW Swap, Uniswap, Aave
 - **Multi-chain**: Ethereum, L2s, Gnosis Chain
@@ -227,6 +326,7 @@ When researching Safe, prioritize these components:
 **Format**: `{project}-{type}-{YYYYMMDD}.{ext}`
 
 **Examples**:
+
 - `safe-knowledge-base-20251212.json`
 - `safe-technical-analysis-20251212.md`
 - `safe-components-20251212.csv`
@@ -234,6 +334,7 @@ When researching Safe, prioritize these components:
 - `multisig-comparison-20251212.csv`
 
 **Rules**:
+
 - Lowercase project/protocol names
 - Use hyphens instead of spaces or underscores
 - ISO date format (YYYYMMDD)
@@ -244,6 +345,7 @@ When researching Safe, prioritize these components:
 **Format**: `{topic}-{type}.md`
 
 **Examples**:
+
 - `safe-sdk-research-notes.md`
 - `erc4337-implementation-notes.md`
 - `multisig-comparison-sources.md`
@@ -255,12 +357,14 @@ When researching Safe, prioritize these components:
 ### When to Commit
 
 **DO commit**:
+
 - After completing an agent run (new outputs generated)
 - After creating or editing agents
 - After updating this INSTRUCTIONS.md file
 - When user explicitly requests
 
 **DON'T commit**:
+
 - During agent execution (wait until complete)
 - Partial or incomplete research
 - Temporary/draft files
@@ -274,6 +378,7 @@ When researching Safe, prioritize these components:
 ```
 
 **Examples**:
+
 ```
 web-scraper: Extract Safe SDK documentation
 
@@ -302,6 +407,7 @@ Added web-scraper and research-blockchain agents optimized for Safe ecosystem.
 3. Add agent entry to "Available Agents" section above
 4. Add routing entries to routing table
 5. Commit:
+
    ```bash
    git add open-agents/agents/{name}.md .claude/commands/safe/{command}.md open-agents/INSTRUCTIONS.md
    git commit -m "agents: Add {name} agent"
@@ -313,6 +419,7 @@ Added web-scraper and research-blockchain agents optimized for Safe ecosystem.
 2. Update routing table if triggers changed
 3. Test the modified agent
 4. Commit:
+
    ```bash
    git add -A
    git commit -m "agents: Update {name} - {what changed}"
@@ -323,6 +430,7 @@ Added web-scraper and research-blockchain agents optimized for Safe ecosystem.
 1. Delete agent file and command files
 2. Remove from "Available Agents" and routing table
 3. Commit:
+
    ```bash
    git add -A
    git commit -m "agents: Remove {name} agent"
@@ -337,7 +445,9 @@ Added web-scraper and research-blockchain agents optimized for Safe ecosystem.
 **Goal**: Research Safe protocol (SDK, Core, API)
 
 **Steps**:
+
 1. Start with documentation scraping:
+
    ```
    /safe scrape https://docs.safe.global/home/what-is-safe SDK,Core,API
    ```
@@ -345,6 +455,7 @@ Added web-scraper and research-blockchain agents optimized for Safe ecosystem.
 2. Review generated outputs in `output-*` folders
 
 3. Perform deep technical analysis:
+
    ```
    /safe research Safe SDK,Core,API
    ```
@@ -352,11 +463,13 @@ Added web-scraper and research-blockchain agents optimized for Safe ecosystem.
 4. Read comprehensive technical report in `output-reports/`
 
 5. For comparisons:
+
    ```
    /safe research "Compare Safe with [other protocol]"
    ```
 
 **Expected Outputs**:
+
 - `safe-knowledge-base-{date}.json` - Structured documentation data
 - `safe-analysis-{date}.md` - Comprehensive documentation summary
 - `safe-components-{date}.csv` - Component/feature matrix
@@ -370,12 +483,15 @@ Added web-scraper and research-blockchain agents optimized for Safe ecosystem.
 **Goal**: Understand how to integrate Safe into your application
 
 **Steps**:
+
 1. Extract SDK documentation:
+
    ```
    /safe scrape https://docs.safe.global/sdk "Protocol Kit,API Kit,Relay Kit"
    ```
 
 2. Get integration-focused analysis:
+
    ```
    /safe research "Safe SDK integration patterns"
    ```
@@ -387,6 +503,7 @@ Added web-scraper and research-blockchain agents optimized for Safe ecosystem.
    - Best practices
 
 **Expected Outputs**:
+
 - SDK-specific knowledge base
 - Integration-focused technical report
 - Code examples and patterns
@@ -398,12 +515,15 @@ Added web-scraper and research-blockchain agents optimized for Safe ecosystem.
 **Goal**: Audit Safe's security model
 
 **Steps**:
+
 1. Extract core documentation:
+
    ```
    /safe scrape https://docs.safe.global "Smart Account,Modules,Guards"
    ```
 
 2. Perform security-focused research:
+
    ```
    /safe research "Safe security model and audit history"
    ```
@@ -416,6 +536,7 @@ Added web-scraper and research-blockchain agents optimized for Safe ecosystem.
    - Risk assessment
 
 **Expected Outputs**:
+
 - Security-focused technical analysis
 - Risk assessment report
 - Contract architecture diagrams
@@ -450,6 +571,7 @@ Research multiple protocols and compare:
 ```
 
 Agent will:
+
 - Use both knowledge bases
 - Research additional sources
 - Create comparison matrices
@@ -497,6 +619,7 @@ Start broad, then go deep:
 ### Quality Indicators
 
 Good research outputs include:
+
 - [ ] Multiple authoritative sources cited
 - [ ] Code examples when relevant
 - [ ] Architecture diagrams for complex systems
@@ -513,6 +636,7 @@ Good research outputs include:
 **Problem**: Agent doesn't activate when expected
 
 **Solutions**:
+
 1. Use explicit slash command: `/safe scrape` or `/safe research`
 2. Check routing table for correct trigger phrases
 3. Mention agent name explicitly: "Use the web-scraper agent to..."
@@ -522,6 +646,7 @@ Good research outputs include:
 **Problem**: Agent stops before completing full analysis
 
 **Solutions**:
+
 1. Ask agent to continue: "Please complete the analysis"
 2. Be more specific about scope: Focus on smaller area
 3. Check if agent needs additional information
@@ -531,6 +656,7 @@ Good research outputs include:
 **Problem**: Research blockchain agent used when scraper needed (or vice versa)
 
 **Solutions**:
+
 1. Use specific slash command
 2. Explicitly name the agent: "Use web-scraper agent to..."
 3. Check routing table and use listed trigger phrases
@@ -544,12 +670,14 @@ Good research outputs include:
 This system can be extended for other protocols:
 
 **Example: Uniswap Research Agent**
+
 1. Create `agents/uniswap-researcher.md`
 2. Specialize behaviors for AMM/DEX analysis
 3. Add commands: `.claude/commands/uniswap/`
 4. Update routing table
 
 **Example: Security Audit Agent**
+
 1. Create `agents/security-auditor.md`
 2. Focus on vulnerability detection
 3. Add specialized security analysis patterns
@@ -560,6 +688,7 @@ This system can be extended for other protocols:
 Agents can create reusable scripts in `tools/`:
 
 **Example Uses**:
+
 - Automated scraping scripts for regular documentation updates
 - Contract ABI extraction tools
 - Diagram generation automation
@@ -570,19 +699,22 @@ Agents can create reusable scripts in `tools/`:
 ## Related Resources
 
 ### Safe Ecosystem
-- **Documentation**: https://docs.safe.global
-- **GitHub**: https://github.com/safe-global
-- **Core SDK**: https://github.com/safe-global/safe-core-sdk
-- **Smart Contracts**: https://github.com/safe-global/safe-smart-account
+
+- **Documentation**: <https://docs.safe.global>
+- **GitHub**: <https://github.com/safe-global>
+- **Core SDK**: <https://github.com/safe-global/safe-core-sdk>
+- **Smart Contracts**: <https://github.com/safe-global/safe-smart-account>
 
 ### Open Agent System
+
 - **Specification**: See `OpenAgentDefinition.md` in project root
-- **GitHub**: https://github.com/bladnman/open-agent-system
+- **GitHub**: <https://github.com/bladnman/open-agent-system>
 
 ### AI Coding Assistants
-- **Claude Code**: https://claude.ai/code
-- **Gemini CLI**: https://gemini.google.com
-- **Codex**: https://openai.com/blog/openai-codex
+
+- **Claude Code**: <https://claude.ai/code>
+- **Gemini CLI**: <https://gemini.google.com>
+- **Codex**: <https://openai.com/blog/openai-codex>
 
 ---
 
@@ -597,6 +729,7 @@ Agents can create reusable scripts in `tools/`:
 ### Improving the System
 
 This is an experimental research system. Improvements welcome:
+
 - Refine agent behaviors based on results
 - Add new specialized agents
 - Create automation tools
@@ -606,13 +739,14 @@ This is an experimental research system. Improvements welcome:
 
 ## Metadata
 
-- **System Version**: 1.0
+- **System Version**: 1.1
 - **Created**: 2025-12-12
-- **Primary Focus**: Safe (Gnosis Safe) Protocol Research
-- **Agent Count**: 2 (Web Scraper, Research Blockchain)
-- **Target Users**: Developers, Researchers, Security Auditors
-- **Status**: Production-ready for Safe research
+- **Last Updated**: 2025-12-12
+- **Primary Focus**: Blockchain Research, Code Review, Technical Documentation
+- **Agent Count**: 4 (Web Scraper, Research Blockchain, AI Code Auditor, Notion Post Generator)
+- **Target Users**: Developers, Researchers, Security Auditors, Technical Writers
+- **Status**: Production-ready for blockchain research, code review, and technical publishing
 
 ---
 
-*This Open Agent System transforms Claude Code into a specialized blockchain research environment using only markdown files.*
+*This Open Agent System transforms Claude Code into a specialized blockchain research, code review, and technical publishing environment using only markdown files.*
