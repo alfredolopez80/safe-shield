@@ -105,7 +105,72 @@ User Transaction → Safe Smart Account → Guard Hook (Pre-Execution)
 
 ### System Architecture
 
-See: `open-agents/output-analysis/safeshield-architecture-20251212.mmd`
+```mermaid
+graph TB
+    subgraph "User Layer"
+        User[Treasury/Compliance Team]
+        SafeUI[Safe Interface]
+    end
+
+    subgraph "Safe Shield Integration Layer"
+        SafeContract[Safe Smart Account<br/>Multisig Contract]
+        GuardHook[Transaction Guard Hook<br/>Pre/Post Execution]
+    end
+
+    subgraph "Hypernative Guardian Engine"
+        Guardian[Guardian Service]
+        Simulator[Transaction Simulator]
+        AIEngine[AI/ML Detection Engine<br/>300+ Risk Types]
+        PolicyEngine[Policy Enforcement Engine]
+        RiskDB[(Risk Intelligence DB<br/>70+ Chains)]
+    end
+
+    subgraph "Hypernative Platform Services"
+        Platform[Monitoring Platform]
+        Screener[Address Screener]
+        Templates[(250+ Risk Templates)]
+    end
+
+    subgraph "Blockchain Networks"
+        ETH[Ethereum]
+        L2[Layer 2s]
+        Other[70+ Other Chains]
+    end
+
+    User -->|Initiate Transaction| SafeUI
+    SafeUI -->|Submit to Safe| SafeContract
+    SafeContract -->|Pre-execution Hook| GuardHook
+    GuardHook -->|Send for Analysis| Guardian
+    Guardian -->|Simulate| Simulator
+    Simulator -->|Query Chain State| ETH
+    Simulator -->|Query Chain State| L2
+    Simulator -->|Query Chain State| Other
+    Guardian -->|Analyze Risks| AIEngine
+    AIEngine -->|Check Patterns| RiskDB
+    AIEngine -->|Use Templates| Templates
+    Guardian -->|Apply Rules| PolicyEngine
+    Guardian -->|Check Address| Screener
+    PolicyEngine -->|Verdict:<br/>Approve/Flag/Deny| GuardHook
+    GuardHook -->|Display Results| SafeUI
+    SafeUI -->|Show Risk Assessment| User
+    User -->|Approve/Reject| SafeContract
+    SafeContract -->|Execute if Approved| ETH
+    SafeContract -->|Post-execution Hook| GuardHook
+    Platform -.->|Real-time Monitoring| RiskDB
+
+    classDef userClass fill:#e1f5ff,stroke:#0066cc,stroke-width:2px
+    classDef safeClass fill:#12ff80,stroke:#00a854,stroke-width:2px
+    classDef guardianClass fill:#fff3cd,stroke:#ff9900,stroke-width:3px
+    classDef platformClass fill:#f8d7da,stroke:#cc0000,stroke-width:2px
+    classDef chainClass fill:#e7e7e7,stroke:#666666,stroke-width:2px
+
+    class User,SafeUI userClass
+    class SafeContract,GuardHook safeClass
+    class Guardian,Simulator,AIEngine,PolicyEngine,RiskDB guardianClass
+    class Platform,Screener,Templates platformClass
+    class ETH,L2,Other chainClass
+```
+
 
 **Verified Components**:
 
@@ -131,7 +196,75 @@ See: `open-agents/output-analysis/safeshield-architecture-20251212.mmd`
 
 ### Transaction Flow
 
-See: `open-agents/output-analysis/guardian-transaction-flow-20251212.mmd`
+```mermaid
+sequenceDiagram
+    participant User as Treasury Team
+    participant UI as Safe Interface
+    participant Safe as Safe Smart Account
+    participant Guard as Transaction Guard
+    participant Guardian as Hypernative Guardian
+    participant Sim as Transaction Simulator
+    participant AI as AI Detection Engine
+    participant Policy as Policy Engine
+    participant Chain as Blockchain
+
+    User->>UI: Initiate Transaction<br/>(to, value, data)
+    UI->>Safe: Create Transaction
+    Safe->>Guard: checkTransaction()<br/>Pre-execution Hook
+
+    activate Guard
+    Guard->>Guardian: Analyze Transaction
+
+    activate Guardian
+    Guardian->>Sim: Simulate Execution
+    activate Sim
+    Sim->>Chain: Fork Chain State
+    Chain-->>Sim: Current State
+    Sim->>Sim: Execute Transaction<br/>in Sandbox
+    Sim-->>Guardian: Simulation Results<br/>(state changes, events, gas)
+    deactivate Sim
+
+    Guardian->>AI: Detect Threats
+    activate AI
+    AI->>AI: Pattern Matching<br/>300+ Risk Types
+    AI->>AI: ML Model Analysis
+    AI->>AI: Cross-chain Correlation
+    AI-->>Guardian: Risk Assessment<br/>(score, categories, severity)
+    deactivate AI
+
+    Guardian->>Policy: Apply Policies
+    activate Policy
+    Policy->>Policy: Check Whitelists
+    Policy->>Policy: Validate Limits
+    Policy->>Policy: Screen Addresses
+    Policy->>Policy: Evaluate Thresholds
+    Policy-->>Guardian: Policy Verdict<br/>(approve/flag/deny)
+    deactivate Policy
+
+    Guardian-->>Guard: Final Assessment<br/>(verdict + explanation)
+    deactivate Guardian
+
+    Guard-->>Safe: Return Verdict
+    deactivate Guard
+
+    Safe->>UI: Display Results
+    UI-->>User: Show Risk Assessment<br/>+ Plain Language Explanation
+
+    alt Transaction Approved
+        User->>UI: Approve & Sign
+        UI->>Safe: Submit Signatures
+        Safe->>Chain: Execute Transaction
+        Chain-->>Safe: Transaction Receipt
+        Safe->>Guard: checkAfterExecution()<br/>Post-execution Hook
+        Guard->>Guardian: Verify Execution
+        Guardian-->>Guard: Confirmation
+    else Transaction Flagged
+        User->>User: Review Risks
+        User->>UI: Manual Approval Decision
+    else Transaction Denied
+        UI-->>User: Transaction Blocked<br/>Policy Violation
+    end
+```
 
 **Verified Integration Pattern**:
 
